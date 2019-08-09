@@ -1,6 +1,6 @@
 {
-  "name": "@verdaccio/local-storage-test",
-  "version": "2.4.1",
+  "name": "verdaccio-local-storage-test",
+  "version": "2.4.2",
   "description": "local storage implementation",
   "main": "lib/index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "@verdaccio/commons-api": "^0.1.1",
     "@verdaccio/file-locking": "^1.0.3",
+    "@verdaccio/local-storage": "^2.2.1",
     "@verdaccio/streams": "^2.0.0",
     "async": "3.1.0",
     "debug": "^4.1.1",
