@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.18](https://github.com/liams98/local-storage/compare/v2.4.17...v2.4.18) (2019-08-09)
+
+
+
 ### [2.4.17](https://github.com/liams98/local-storage/compare/v2.4.16...v2.4.17) (2019-08-09)
 
 
