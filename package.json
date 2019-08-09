@@ -1,6 +1,6 @@
 {
   "name": "verdaccio-local-storage-test",
-  "version": "2.4.11",
+  "version": "2.4.12",
   "description": "local storage implementation",
   "main": "lib/index.js",
   "scripts": {
