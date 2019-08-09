@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/liams98/local-storage/compare/v2.2.1...v2.4.0) (2019-08-09)
+
+
+### Bug Fixes
+
+* restore closure ([8ec27f2](https://github.com/liams98/local-storage/commit/8ec27f2))
+
+
+### Build System
+
+* add @verdaccio/commons-api dependency ([c1bfe92](https://github.com/liams98/local-storage/commit/c1bfe92))
+
+
+### Features
+
+* add logging for each method ([3c915c7](https://github.com/liams98/local-storage/commit/3c915c7))
+
+
+
+## [2.3.0](https://github.com/liams98/local-storage/compare/v2.2.1...v2.3.0) (2019-08-09)
+
+
+### Bug Fixes
+
+* restore closure ([8ec27f2](https://github.com/liams98/local-storage/commit/8ec27f2))
+
+
+### Build System
+
+* add @verdaccio/commons-api dependency ([c1bfe92](https://github.com/liams98/local-storage/commit/c1bfe92))
+
+
+### Features
+
+* add logging for each method ([3c915c7](https://github.com/liams98/local-storage/commit/3c915c7))
+
+
+
 ### [2.2.1](https://github.com/verdaccio/local-storage/compare/v2.2.0...v2.2.1) (2019-06-30)
 
 

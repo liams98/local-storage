@@ -1,6 +1,6 @@
 {
-  "name": "@verdaccio/local-storage",
-  "version": "2.2.1",
+  "name": "@verdaccio/local-storage-test",
+  "version": "2.4.0",
   "description": "local storage implementation",
   "main": "lib/index.js",
   "scripts": {
@@ -18,9 +18,9 @@
     "coverage:publish": "codecov"
   },
   "dependencies": {
-    "@verdaccio/commons-api": "0.1.1",
-    "@verdaccio/file-locking": "1.0.3",
-    "@verdaccio/streams": "2.0.0",
+    "@verdaccio/commons-api": "^0.1.1",
+    "@verdaccio/file-locking": "^1.0.3",
+    "@verdaccio/streams": "^2.0.0",
     "async": "3.1.0",
     "lodash": "4.17.11",
     "mkdirp": "0.5.1"
@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "1.11.0",
     "@verdaccio/babel-preset": "0.2.1",
     "@verdaccio/eslint-config": "0.0.1",
-    "@verdaccio/types": "5.2.2",
+    "@verdaccio/types": "^5.2.2",
     "codecov": "3.5.0",
     "cross-env": "5.2.0",
     "eslint": "5.15.3",
