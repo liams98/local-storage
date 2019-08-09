@@ -6,6 +6,7 @@ import rm from 'rmdir-sync';
 import LocalDriver, { fileExist, fSError, noSuchFile, resourceNotAvailable } from '../src/local-fs';
 import { Logger, ILocalPackageManager } from '@verdaccio/types';
 import pkg from './__fixtures__/pkg';
+import fakepkg from "./__fixtures__/fakepkg.js"
 
 let localTempStorage: string;
 const pkgFileName = 'package.json';

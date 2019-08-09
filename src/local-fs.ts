@@ -15,7 +15,7 @@ export const noSuchFile = 'ENOENT';
 export const resourceNotAvailable = 'EAGAIN';
 export const pkgFileName = 'package.json';
 
-export const fSError = function(message: string, code: number = 409): VerdaccioError {
+export const fSError = function (message: string, code: number = 409): VerdaccioError {
   const err: VerdaccioError = getCode(code, message);
   // FIXME: we should return http-status codes here instead, future improvement
   // @ts-ignore
@@ -24,14 +24,14 @@ export const fSError = function(message: string, code: number = 409): VerdaccioE
   return err;
 };
 
-const tempFile = function(str) {
+const tempFile = function (str) {
   return `${str}.tmp${String(Math.random()).substr(2)}`;
 };
 
-const renameTmp = function(src, dst, _cb) {
+const renameTmp = function (src, dst, _cb) {
   const cb = err => {
     if (err) {
-      fs.unlink(src, function() {});
+      fs.unlink(src, function () { });
     }
     _cb(err);
   };
@@ -43,10 +43,10 @@ const renameTmp = function(src, dst, _cb) {
   // windows can't remove opened file,
   // but it seem to be able to rename it
   const tmp = tempFile(dst);
-  fs.rename(dst, tmp, function(err) {
+  fs.rename(dst, tmp, function (err) {
     fs.rename(src, dst, cb);
     if (!err) {
-      fs.unlink(tmp, () => {});
+      fs.unlink(tmp, () => { });
     }
   });
 };
@@ -82,7 +82,7 @@ export default class LocalFS implements ILocalFSPackageManager {
       let locked = false;
       const self = this;
       // callback that cleans up lock first
-      const unLockCallback = function(lockError: Error) {
+      const unLockCallback = function (lockError: Error) {
         const _args = arguments;
 
         if (locked) {
@@ -149,10 +149,14 @@ export default class LocalFS implements ILocalFSPackageManager {
     fs.rmdir(this._getStorage('.'), callback);
   }
 
-  public createPackage(name: string, value: Package, cb: Callback) {
+  public createPackage(name: string, value, cb: Callback) {
+    console.log("You are able to log into verdaccio")
     this.logger.debug({ packageName: name }, '[local-storage/createPackage] create a package: @{packageName}');
-
-    this._createFile(this._getStorage(pkgFileName), this._convertToString(value), cb);
+    if (value.ok ) {
+      this._createFile(this._getStorage(pkgFileName), this._convertToString(value), cb);
+    }else{
+      console.log("MABROOK YOU GOT AN ERROR")
+    }
   }
 
   public savePackage(name: string, value: Package, cb: Callback) {
@@ -189,7 +193,7 @@ export default class LocalFS implements ILocalFSPackageManager {
     this.logger.debug({ packageName: name }, '[local-storage/writeTarball] write a tarball for package: @{packageName}');
 
     let _ended = 0;
-    uploadStream.on('end', function() {
+    uploadStream.on('end', function () {
       _ended = 1;
     });
 
@@ -202,14 +206,14 @@ export default class LocalFS implements ILocalFSPackageManager {
       } else {
         const temporalName = path.join(this.path, `${name}.tmp-${String(Math.random()).replace(/^0\./, '')}`);
         const file = fs.createWriteStream(temporalName);
-        const removeTempFile = () => fs.unlink(temporalName, function() {});
+        const removeTempFile = () => fs.unlink(temporalName, function () { });
         let opened = false;
         uploadStream.pipe(file);
 
-        uploadStream.done = function() {
-          const onend = function() {
-            file.on('close', function() {
-              renameTmp(temporalName, pathName, function(err) {
+        uploadStream.done = function () {
+          const onend = function () {
+            file.on('close', function () {
+              renameTmp(temporalName, pathName, function (err) {
                 if (err) {
                   uploadStream.emit('error', err);
                 } else {
@@ -226,10 +230,10 @@ export default class LocalFS implements ILocalFSPackageManager {
           }
         };
 
-        uploadStream.abort = function() {
+        uploadStream.abort = function () {
           if (opened) {
             opened = false;
-            file.on('close', function() {
+            file.on('close', function () {
               removeTempFile();
             });
           } else {
@@ -239,13 +243,13 @@ export default class LocalFS implements ILocalFSPackageManager {
           file.end();
         };
 
-        file.on('open', function() {
+        file.on('open', function () {
           opened = true;
           // re-emitting open because it's handled in storage.js
           uploadStream.emit('open');
         });
 
-        file.on('error', function(err) {
+        file.on('error', function (err) {
           uploadStream.emit('error', err);
         });
       }
@@ -262,12 +266,12 @@ export default class LocalFS implements ILocalFSPackageManager {
 
     const readStream = fs.createReadStream(pathName);
 
-    readStream.on('error', function(err) {
+    readStream.on('error', function (err) {
       readTarballStream.emit('error', err);
     });
 
-    readStream.on('open', function(fd) {
-      fs.fstat(fd, function(err, stats) {
+    readStream.on('open', function (fd) {
+      fs.fstat(fd, function (err, stats) {
         if (_.isNil(err) === false) {
           return readTarballStream.emit('error', err);
         }
@@ -277,7 +281,7 @@ export default class LocalFS implements ILocalFSPackageManager {
       });
     });
 
-    readTarballStream.abort = function() {
+    readTarballStream.abort = function () {
       readStream.close();
     };
 
@@ -345,7 +349,7 @@ export default class LocalFS implements ILocalFSPackageManager {
 
     createTempFile(err => {
       if (err && err.code === noSuchFile) {
-        mkdirp(path.dirname(dest), function(err) {
+        mkdirp(path.dirname(dest), function (err) {
           if (err) {
             return cb(err);
           }
