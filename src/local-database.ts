@@ -17,6 +17,8 @@ const DB_NAME = '.verdaccio-db.json';
 /**
  * Handle local database.
  */
+
+ console.log("hello world from local Database");
 class LocalDatabase implements IPluginStorage<{}> {
   public path: string;
   public logger: Logger;
