@@ -1,6 +1,6 @@
 {
   "name": "verdaccio-local-storage-test",
-  "version": "2.4.26",
+  "version": "2.4.27",
   "description": "local storage implementation",
   "main": "lib/index.js",
   "scripts": {
@@ -51,7 +51,7 @@
   "keywords": [
     "plugin",
     "verdaccio",
-    "local-storage"
+    "local-storage-test"
   ],
   "commitlint": {
     "extends": [
